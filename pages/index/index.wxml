@@ -1,0 +1,70 @@
+<!--index.wxml-->
+<view class="ResumeContainer">
+  
+  <view class="banner">
+    <image src="../../images/head.jpg" class="head" />
+    <view class="info">
+      <view class="titleResume">RESUME</view>
+      <view class="enName">Haze.Liu</view>
+      <view class="title">FE Engineer</view>
+    </view>
+
+    <image src="../../images/bg.jpg" class="bannerBg" />
+    <view class="bannerOverlay"></view>
+  </view>
+
+  <view class="aboutMe area">
+    <view class="title">
+     
+      关于我
+    </view>
+    <view class="iconArea">
+      <image src="../../images/icon1.png" />
+      <text>刘心远 / 男</text>
+    </view>
+    <view class="iconArea">
+      <image src="../../images/icon2.png" />
+      <text>1989/10/14</text>
+    </view>
+    <view class="iconArea">
+      <image src="../../images/icon3.png" />
+      <text>本科 / 大连海洋大学计算机系</text>
+    </view>
+    <view class="iconArea">
+      <image src="../../images/icon4.png" />
+      <text>5年 (工作年限)</text>
+    </view>
+    <view class="iconArea">
+      <image src="../../images/icon5.png" />
+      <text>大连</text>
+    </view>
+    <view class="iconArea">
+      <image src="../../images/icon6.png" />
+      <text>前端工程师、全栈工程师</text>
+    </view>
+    <view class="iconArea">
+      <image src="../../images/icon7.png" />
+      <text>12.5K ~ 15K</text>
+    </view>
+  </view>
+
+  <view class="aboutMe area">
+    <view class="title">
+      工作经验
+    </view>
+    <view class="accordion">
+      <view class="accordionItem">
+        <view class="title">
+        </view>
+        <view class="content">
+        </view>
+      </view>
+
+    </view>
+  </view>
+
+
+
+
+
+</view>
