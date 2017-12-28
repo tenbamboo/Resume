@@ -1,67 +1,150 @@
 <!--index.wxml-->
 <view class="ResumeContainer">
-  
+
+  <!-- banner 区域-->
   <view class="banner">
-    <image src="../../images/head.jpg" class="head" />
-    <view class="info">
+    <image src="../../images/head.jpg" class="head hidden" />
+    <view class="info hidden">
       <view class="titleResume">RESUME</view>
-      <view class="enName">Haze.Liu</view>
-      <view class="title">FE Engineer</view>
+      <view class="enName">{{baseInfo.enName}}</view>
+      <view class="title">{{baseInfo.title}}</view>
     </view>
 
     <image src="../../images/bg.jpg" class="bannerBg" />
     <view class="bannerOverlay"></view>
   </view>
 
-  <view class="aboutMe area">
-    <view class="title">
-     
+  <!-- 关于我 区域-->
+  <view class="aboutMe area hidden">
+    <view class="title ">
+
       关于我
     </view>
     <view class="iconArea">
       <image src="../../images/icon1.png" />
-      <text>刘心远 / 男</text>
+      <text>{{baseInfo.nameAndSex}}</text>
     </view>
     <view class="iconArea">
       <image src="../../images/icon2.png" />
-      <text>1989/10/14</text>
+      <text>{{baseInfo.birthday}}</text>
     </view>
     <view class="iconArea">
       <image src="../../images/icon3.png" />
-      <text>本科 / 大连海洋大学计算机系</text>
+      <text>{{baseInfo.diplomaAndSchool}}</text>
     </view>
     <view class="iconArea">
       <image src="../../images/icon4.png" />
-      <text>5年 (工作年限)</text>
+      <text>{{baseInfo.workAge}} (工作年限)</text>
     </view>
     <view class="iconArea">
       <image src="../../images/icon5.png" />
-      <text>大连</text>
+      <text>{{baseInfo.location}}</text>
     </view>
     <view class="iconArea">
       <image src="../../images/icon6.png" />
-      <text>前端工程师、全栈工程师</text>
+      <text>{{baseInfo.wantPosition}}</text>
     </view>
     <view class="iconArea">
       <image src="../../images/icon7.png" />
-      <text>12.5K ~ 15K</text>
+      <text>{{baseInfo.salary}}</text>
     </view>
   </view>
 
-  <view class="aboutMe area">
+  <!-- 工作经历 区域-->
+  <view class="area">
     <view class="title">
-      工作经验
+      aaa
     </view>
     <view class="accordion">
-      <view class="accordionItem">
-        <view class="title">
+      <block wx:for="{{workList}}" wx:key="index">
+        <view class="accordionItem">
+          <view class="title  {{item.isShow == true?'isShow':''}}" bindtap="toggleAccordionItem" data-index="{{index}}">
+            <text>{{item.title}}</text>
+          </view>
+          <view class="contentWrap {{item.isShow == true?'isShow':''}}" wx:if="{{item.isShow == true}}">
+            <view class="content">
+              {{item.content}}
+            </view>
+          </view>
         </view>
-        <view class="content">
-        </view>
-      </view>
+      </block>
+    </view>
 
+  </view>
+  <!-- 技能栈区域-->
+  <view class="skillList area hidden">
+    <view class="title">
+      技能栈
+    </view>
+    <view class="content">
+      <block wx:for="{{skillList}}" wx:key="index">
+        <view>{{item}}</view>
+      </block>
     </view>
   </view>
+  <!-- 技能关键字区域-->
+  <view class="starList area hidden">
+    <view class="title">
+      技能关键字
+    </view>
+    <view class="content">
+      <block wx:for="{{starList}}" wx:key="index">
+        <view>
+          <text>{{item.name}}</text>
+          <block wx:for="{{item.star}}" wx:key="index">
+            <image src="../../images/star.png" />
+          </block>
+          <block wx:for="{{5 - item.star}}" wx:key="index">
+            <image src="../../images/star_e.png" />
+          </block>
+        </view>
+      </block>
+    </view>
+  </view>
+  <!-- 联系方式区域-->
+  <view class="contactList area ">
+    <view class="title">
+      联系方式
+    </view>
+    <view class="haveData content" wx:if="{{isShowContact}}">
+      <view class="iconArea" bindtap='callPhone'>
+        <image src="../../images/icon8.png" />
+        <text class="link" >{{baseInfo.mobilePhone}}</text>
+      </view>
+      <view class="iconArea"   bindtap="setClipboard" data-content="{{baseInfo.email}}">
+        <image src="../../images/icon9.png" />
+        <text class="link">{{baseInfo.email}}</text>
+      </view>
+      <view class="iconArea" bindtap="setClipboard" data-content="{{baseInfo.wechatNo}}" >
+        <image src="../../images/icon10.png" />
+        <text class="link">{{baseInfo.wechatNo}}</text>
+      </view>
+      <view class="iconArea" wx:if="{{baseInfo.github}}" bindtap="setClipboard" data-content="{{baseInfo.githubUrl}}">
+        <image src="../../images/icon11.png" />
+        <text class="link">{{baseInfo.github}}</text>
+      </view>
+    </view>
+    <view class="noData content" wx:if="{{!isShowContact}}">
+      <image src="../../images/icon12.png" />
+      <view>作者暂时隐藏了联系方式，可能最近没有找工作的想法</view>
+    </view>
+  </view>
+
+  <view class="aboutMe area hidden">
+    <view class="title">
+      致谢
+    </view>
+    <view class="content">
+      <view class="iconArea" wx:if="{{baseInfo.github}}">
+        <image src="../../images/icon13.png" />
+        <text>感谢您花时间阅读我的简历，期待能有机会和您共事。</text>
+      </view>
+    </view>
+  </view>
+
+   <view class="powerBy" bindtap="setClipboard" data-content="https://github.com/tenbamboo/Resume">
+    Power By <text class="link">GitHub : @tenbamboo/Resume</text>
+   </view>
 
 
 

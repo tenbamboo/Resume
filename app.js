@@ -5,12 +5,7 @@ App({
 
 
 
-    wx.request({
-      url: 'https://tenbamboo.github.io/Gabriel/js/index.js',
-      success:function(data){
-      console.log(data)
-      }
-    })
+   
  
   },
   globalData: {
