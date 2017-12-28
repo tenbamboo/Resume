@@ -2,14 +2,99 @@ const LocalData = {
   isShowContact: true, //是否显示联系方式
   workList: [ //工作经验
     {
-      title: '标题',
-      content: ' 我是内容点点滴滴的离开家了顺利打开房间里思考等级分类考试的解放路口建设路口的分机老师的发多少收到 适得府君书离开大家 时代峰峻老司机代理费 似懂非懂数据来看',
-      isShow: false,
+      title: '倍通健康（2017年9月 ~ 至今）',
+      projectList: [
+        {
+          projectName: '内部流程项目',
+          duty: '整理优化并重写项目代码（ES6）',
+          info: '内部流程项目。',
+          skill: 'Java,Vue'
+        },
+        {
+          projectName: '某医疗社区（公众号）',
+          duty: '前台架构，PC端前端业务代码',
+          info: '维系医院、医生、护士、病友的社区。',
+          skill: 'Java,Vue,ES6,Webpack'
+        },
+       
+      ],
     },
     {
-      title: '标题2',
-      content: ' 2我是内容点点滴滴的离开家了顺利打开房间里思考等级分类考试的解放路口建设路口的分机老师的发多少收到 适得府君书离开大家 时代峰峻老司机代理费 似懂非懂数据来看2',
-      isShow: false,
+      title: '东软集团（2016年3月 ~ 2017月09月）',
+      projectList: [
+        {
+          projectName: '上海福利彩票即开票系统',
+          duty: '前台架构，组件二次封装，封装自有UI库',
+          info: '彩票行业，本系统囊括即开票（刮刮乐）的整个生命周期，主要包含：创建、印刷、分发、调拨、兑奖、销毁等。',
+          skill: 'Java,Jquery,Pjax'
+        },
+        {
+          projectName: '蓝熙健康、绿城健康社区',
+          duty: '前台架构，组件二次封装，与客户协调和沟通需求，细化需求，并抽离需求给相关开发人员',
+          info: '医疗行业，使用相关检测设备（血糖仪，血压仪等）检测之后上传到云端，再推送到设备的关注者，让关注者实时了解使用的数据。 以此衍生附属功能，比如月度报表、分析数据并给出改善病情的建议、专属家庭医生和健康管理师实时解答相关问题等功能。',
+          skill: 'Java,Jquery,Pjax'
+        },
+        {
+          projectName: '彩票O2O项目',
+          info: '通过Cordova和相关Plugin来封装成IOS和Android的APP,并实现门店端和用户端整个前端页面逻辑',
+          duty: '调研需求，前台架构，组件二次封装，后期的维护',
+          skill: 'Cordova,Java,Jquery,Pjax'
+
+        },
+      ],
+    },
+    {
+      title: '大连楼兰（2015年5月 ~ 2016年3月）',
+      projectList: [
+        {
+          projectName: '公司内部微信服务号',
+          duty: 'Demo原型编写，前端业务代码',
+          info: '公司内部流程',
+          skill: 'Java,Jquery'
+        },
+        {
+          projectName: '内部项目',
+          duty: '优化之前老代码，提升代码的可阅读性，并已插件的形式支持各个模块',
+          info: '内部流程项目，主要是维护代码',
+          skill: 'Java,Jquery'
+        },
+        {
+          projectName: '预言性项目（PICC合作）',
+          duty: '复用之前的插件来开发，前端开发，前端简单架构',
+          info: '此项目是预言性项目，公司和保险公司合作，监控车辆详细数据，并生成第二年的保单。',
+          skill: 'Java,Jquery'
+        },
+      ],
+    },
+    {
+      title: '博彦科技（2014年3月 ~ 2015年5月）',
+      projectList: [
+        {
+          projectName: '外派IBM',
+          duty: '前端业务代码',
+          info: '内部孵化项目，通过WorkLight 来 Hybrid 开发 想法池 的需求',
+          skill: 'Cordova,Java,Jquery'
+        },
+
+      ],
+    },
+    {
+      title: '中软国际（2013年3月 ~ 2014年3月）',
+      projectList: [
+        {
+          projectName: '中信证劵对外服务平台',
+          duty: '按模块开发（前后端）',
+          info: '本项目是为各个劵商提供信息和咨询的分析上传和下载，通过客户端来自动分发信息。 ',
+          skill: 'Flex,Java'
+        },
+        {
+          projectName: '英大财险微信公众平台',
+          duty: '前端业务代码',
+          info: '本项目通过通过微信关注英大财险公众平台来投保车险等。 ',
+          skill:'JqueryMobile,Jquery,Java'
+        },
+
+      ],
     },
   ],
   baseInfo: { //基础信息

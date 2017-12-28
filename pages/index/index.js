@@ -1,10 +1,25 @@
 import Cain from '../../utils/Cain.js'
-import LocalData from '../../utils/LocalData.js'
+// 本地方式
+// import LocalData from '../../utils/LocalData.js'
 
 Page({
   data: {},
   onReady: function (e) {
-    this.setData(LocalData)
+    this.getData()
+  },
+  //获取数据
+  getData(){
+    // 本地方式
+   // this.setData(LocalData)
+
+   //远程方式
+   const self = this;
+    wx.request({
+      url:'https://health.ztlife.com.cn/UnionWeChat/json/haze.liu.json',
+      success:function(data){
+        self.setData(data.data)
+      }
+    });
   },
   //打开/关闭手风琴项
   toggleAccordionItem(e) {
@@ -25,7 +40,4 @@ Page({
   callPhone() {
     Cain.callPhone(this.data.baseInfo.mobilePhone)
   }
- 
- 
-
 })

@@ -53,17 +53,24 @@
   <!-- 工作经历 区域-->
   <view class="area">
     <view class="title">
-      aaa
+      工作经验
     </view>
     <view class="accordion">
       <block wx:for="{{workList}}" wx:key="index">
         <view class="accordionItem">
           <view class="title  {{item.isShow == true?'isShow':''}}" bindtap="toggleAccordionItem" data-index="{{index}}">
-            <text>{{item.title}}</text>
+            <text >{{item.title}}</text>
           </view>
           <view class="contentWrap {{item.isShow == true?'isShow':''}}" wx:if="{{item.isShow == true}}">
             <view class="content">
-              {{item.content}}
+              <block wx:for="{{item.projectList}}" wx:key="pid" wx:for-index="pid" wx:for-item="pItem">
+                <view class="hr"></view>
+                <view class="detail"><text class="fontBold">项目名：</text>{{pItem.projectName}}</view>
+                <view  class="detail"><text class="fontBold">介绍：</text>{{pItem.info}}</view>
+                <view  class="detail"><text class="fontBold">担当：</text>{{pItem.duty}}</view>
+                <view  class="detail"><text class="fontBold">技术：</text>{{pItem.skill}}</view>
+              
+              </block>
             </view>
           </view>
         </view>

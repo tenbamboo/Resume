@@ -26,19 +26,17 @@
 {
      isShowContact:true, //是否显示联系方式
      workList: [ //工作经验
-      {
-        title: '这里可以写公司名称+时间点',
-        content: '我是详细内容'
-      },
        {
-        title: '百度 AI项目(2017-10 ~ 至今)',
-        content: '我是详细内容'
-      },
-      {
-        title: '百度 自动驾驶项目(2016-10 ~ 2017-10)',
-        content: '我是详细内容'
-      },
-      
+        title: 'xxx公司（2016年9月 ~ 至今）', //公司名
+        projectList: [ // 项目罗列
+        {
+          projectName: '内部流程项目',//项目名称
+          duty: '整理优化并重写项目代码', //项目职责
+          info: '内部流程项目。', //项目介绍
+          skill: 'Java,Vue' //项目使用的核心技术
+        },
+      ],
+    },
     ],
     baseInfo: { //基础信息
       enName: 'Tom', //英文名
