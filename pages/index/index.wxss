@@ -20,7 +20,7 @@
 }
 
 .hidden {
-   /* display: none;  */
+   display: none; 
 }
 
 .banner {
