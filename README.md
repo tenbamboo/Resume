@@ -90,6 +90,12 @@
 }
 
 ```
+
+## 其他
+
+希望大家通过这个小工具，能快速找到心仪的工作,如果觉得不错，您可以赞赏我。
+
+
 ## License
 http://www.opensource.org/licenses/mit-license.php
 
