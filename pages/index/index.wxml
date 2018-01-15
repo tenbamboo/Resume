@@ -1,6 +1,7 @@
 <!--index.wxml-->
 <view class="ResumeContainer">
-
+  <view class="overlay" wx-if="{{overlay}}"></view>
+  
   <!-- banner 区域-->
   <view class="banner">
     <image src="../../images/head.jpg" class="head hidden" />
@@ -150,7 +151,7 @@
   </view>
 
    <view class="powerBy" bindtap="setClipboard" data-content="https://github.com/tenbamboo/Resume">
-    Power By <text class="link">GitHub : @tenbamboo/Resume</text>
+    Powered By <text class="link">GitHub : @tenbamboo/Resume</text>
    </view>
 
 

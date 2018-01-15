@@ -3,7 +3,11 @@ import Cain from '../../utils/Cain.js'
 // import LocalData from '../../utils/LocalData.js'
 
 Page({
-  data: {},
+  data: {
+    overlay:true
+
+  },
+ 
   onReady: function (e) {
     this.getData()
   },
@@ -17,7 +21,9 @@ Page({
     wx.request({
       url:'https://health.ztlife.com.cn/UnionWeChat/json/haze.liu.json',
       success:function(data){
+        wx.hideLoading()
         self.setData(data.data)
+        self.setData({'overlay': false})
       }
     });
   },
