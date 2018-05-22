@@ -79,6 +79,20 @@
     </view>
 
   </view>
+
+    <!-- 其他作品区域-->
+  <view class="starList area hidden">
+    <view class="title">
+      其他作品
+    </view>
+    <view class="content">
+     <block wx:for="{{otherWork}}" wx:key="index">
+        <view>{{item}}</view>
+      </block>
+    </view>
+  </view>
+
+
   <!-- 技能栈区域-->
   <view class="skillList area hidden">
     <view class="title">

@@ -19,7 +19,7 @@ Page({
    //远程方式
    const self = this;
     wx.request({
-      url:'https://health.ztlife.com.cn/UnionWeChat/json/haze.liu.json',
+      url:'https://www.tenbamboo.com/common/haze.liu.json',
       success:function(data){
         wx.hideLoading()
         self.setData(data.data)
