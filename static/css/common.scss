@@ -1,0 +1,148 @@
+$mainColor:#ff7e33;
+//转换px方法
+// $browser-default-font-size: 75px !default;
+// @function pxToRem($px){//$px为需要转换的字号
+//   @return $px / $browser-default-font-size * 1rem;
+// }
+
+$fs40:40px;
+$fs38:38px;
+$fs36:36px;
+$fs34:34px;
+$fs32:32px;
+$fs30:30px;
+$fs28:28px;
+$fs26:26px;
+$fs24:24px;
+$fs22:22px;
+$fs20:20px;
+$fs18:18px;
+$fs16:16px;
+$fs14:14px;
+$fs12:12px;
+
+//定位上下左右居中
+@mixin center{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+//上下居中
+@mixin topcenter{
+  position: absolute;
+  top:50%;
+  transform:translateY(-50%);
+}
+//左右居中
+@mixin leftcenter{
+  position: absolute;
+  left:50%;
+  transform:translateX(-50%);
+}
+//flex布局
+@mixin justify($value:space-between){
+  display: flex;
+  justify-content: $value;
+}
+
+//上下居中
+@mixin align($type:center){
+  display: flex;
+  align-items: center;
+}
+
+//字体大小，颜色
+@mixin sizeColor($size, $color){
+  font-size: $size;
+  color: $color;
+}
+//字体大小、行高、字体
+@mixin fontStyle($size, $line-height, $family: 'Microsoft YaHei'){
+  font:#{$size}/#{$line-height} $family;
+}
+//宽高
+@mixin widthHeight($width,$height){
+  width: $width;
+  height: $height;
+}
+
+@mixin bg($url){
+  background-image: url($url);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+.bottomAreaWrap {
+  height: 39px;
+  background-color: #fff;
+  .bottomArea {
+    position: fixed;
+    z-index: 100;
+    bottom: 0px;
+    width: 100%;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    .item {
+      padding: 10px;
+      background-color: $mainColor;
+      color: #fff;
+      // font-size: $fs14;
+      width: pxToRem(100px);
+      flex: 1;
+      &.btnGray {
+        background-color: #2196F3;
+      }
+    }
+  }
+}
+.mainBtn{
+  background-color: $mainColor;
+  color: #fff;
+  font-size: $fs14;
+  padding: 5px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+
+.commonList {
+  padding: 5px;
+  background-color: #fff;
+  li {
+    position: relative;
+    border-bottom: 0.5px solid #e3e3e3;
+    display: flex;
+    padding: 10px;
+    label {
+      margin-right: 10px;
+      line-height: 25px;
+      width: 70px;
+    }
+    &:after {
+      content: " ";
+      display: inline-block;
+      height: 6px;
+      width: 6px;
+      border-width: 2px 2px 0 0;
+      border-color: $mainColor;
+      border-style: solid;
+      transform: matrix(0.71, 0.71, -0.71, 0.71, 0, 0);
+      position: absolute;
+      top: 50%;
+      right: 15px;
+      margin-top: -4px;
+    }
+    &.noArrow:after{
+      content: "";
+      display: none;
+    }
+  }
+}
+.noData{
+  background-color: #fff;
+  font-size: $fs18;
+  padding:10px;
+  text-align: center;
+}
+
