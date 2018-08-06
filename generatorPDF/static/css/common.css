@@ -1,0 +1,12 @@
+body, ul, li, dl, dt, dd, p, h1, h2, h3, h4, span, form, img, div, option, input, button, checkbox {
+	border: none;
+	margin: 0;
+	padding: 0;
+	outline: 0 none;
+	font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", STHeiti, "Microsoft Yahei", Tahoma, Simsun, sans-serif;
+	-webkit-appearance: none;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);  
+}
+html,body{
+	height: 100%;
+}

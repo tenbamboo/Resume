@@ -1,0 +1,168 @@
+//色值
+$mainColor:#525ca2;//【蓝】
+$mainFontColor:#545454;
+$secFontColor:#666;
+$mainBgColor:#fafafa;
+$mainBorderColor:#f1f1f1;
+$mainBorder:1rpx solid  $mainBorderColor;
+$navigationHeight:125px; //导航栏高度
+
+
+$fs40:40px;
+$fs38:38px;
+$fs36:36px;
+$fs34:34px;
+$fs32:32px;
+$fs30:30px;
+$fs29:29px;
+$fs28:28px;
+$fs27:27px;
+$fs26:26px;
+$fs25:25px;
+$fs24:24px;
+$fs23:23px;
+$fs22:22px;
+$fs21:21px;
+$fs20:20px;
+$fs19:19px;
+$fs18:18px;
+$fs17:17px;
+$fs16:16px;
+$fs15:15px;
+$fs14:14px;
+$fs13:13px;
+$fs12:12px;
+$fs11:11px;
+$fs10:10px;
+
+//定位上下左右居中
+@mixin center{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+//上下居中
+@mixin topcenter{
+  position: absolute;
+  top:50%;
+  transform:translateY(-50%);
+}
+//左右居中
+@mixin leftcenter{
+  position: absolute;
+  left:50%;
+  transform:translateX(-50%);
+}
+//flex布局
+@mixin justify($value:space-between){
+  display: flex;
+  justify-content: $value;
+}
+
+//上下居中
+@mixin align($type:center){
+  display: flex;
+  align-items: center;
+}
+
+//字体大小，颜色
+@mixin sizeColor($size, $color){
+  font-size: $size;
+  color: $color;
+}
+//字体大小、行高、字体
+@mixin fontStyle($size, $line-height, $family: 'Microsoft YaHei'){
+  font:#{$size}/#{$line-height} $family;
+}
+//宽高
+@mixin widthHeight($width,$height){
+  width: $width;
+  height: $height;
+}
+
+@mixin bg($url){
+  background-image: url($url);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+// .commonContainer {
+// 	font-size: $fs16;
+// 	color:$mainFontColor;
+// 	background-color: $mainBgColor;
+// }
+
+.hidden {
+	display: none;
+}
+
+.clr {
+	clear: both;
+}
+
+.clr:after {
+	content: ' ';
+	display: block;
+	clear: both;
+}
+
+.conTxtToDot {
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+.width100 {
+	width: 100%;
+}
+.noData{
+  background-color: #fff;
+  text-align: center;
+  padding:10px;
+}
+
+.clear:after {
+	content: '';
+	display: block;
+	clear: both;
+}
+
+.clear {
+	zoom: 1;
+}
+.fl {
+	float: left;
+}
+
+.fr {
+	float: right;
+}
+.arrow {
+	position: relative;
+}
+
+.arrow:after {
+	content: " ";
+	display: inline-block;
+	height: 6px;
+	width: 6px;
+	border-width: 2px 2px 0 0;
+	border-color: $mainColor;
+	border-style: solid;
+	transform: matrix(0.71, 0.71, -0.71, 0.71, 0, 0);
+	position: absolute;
+	top: 50%;
+	right: 15px;
+	margin-top: -4px;
+}
+
+
+
+.weui-picker__action[data-action='select']{
+  color:$mainColor !important;
+}
+
+.weui-dialog__btn_primary{
+	color:$mainColor !important;
+}
