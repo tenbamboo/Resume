@@ -193,15 +193,6 @@
       <span class="link" >GitHub : @tenbamboo/Resume</span>
     </div>
 
-    <div class="dialogWrap" v-if="dialogStatus">
-      <div class="dialogOverlay"></div>
-      <img src="/static/image/close.png" @click="closeDialog" class="closeBtn" />
-      <div class="dialog">
-        <div class="appreciateArea">
-            <img src="/static/image/code.png"/>
-        </div>
-      </div>
-    </div>
   </div>
 </template>
 

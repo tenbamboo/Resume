@@ -171,12 +171,12 @@
       <p class="title">您还可以</p>
       <div class="content">
         <div class="flex">
-          <button @click="openZSCode" class="appreciateBtn"><img src="/static/image/appreciate.png" />赞赏一下</button>
+          <button class="appreciateBtn" @click="openZSCode"><img src="/static/image/appreciate.png" />赞赏一下</button>
           <button open-type="share" class="shareBtn"><img src="/static/image/share.png" />分享一下</button>
         </div>
 
         <div class="flex">
-          <button class="downPDF"><img src="/static/image/pdf.png" />下载PDF简历</button>
+          <button class="downPDF" @click="showDialog"><img src="/static/image/pdf.png" />下载PDF简历</button>
         </div>
 
       </div>
@@ -189,11 +189,11 @@
 
     <div class="dialogWrap" v-if="dialogStatus">
       <div class="dialogOverlay"></div>
-      <img src="/static/image/close.png" @click="closeDialog" class="closeBtn" />
       <div class="dialog">
-        <div class="appreciateArea">
-          <img src="/static/image/code.png" />
-        </div>
+        <img src="/static/image/close.png" @click="closeDialog" class="closeBtn" />
+        <input class="input" type="text" readonly="readonly" v-model="pdfUrl" />
+        <p>请复制链接，并在PC端下载。</p>
+        <a @click="setClipboard(pdfUrl)">复制</a>
       </div>
     </div>
   </div>
@@ -204,6 +204,7 @@ import Cain from '@cain/'
 export default {
   data () {
     return {
+      pdfUrl: 'http://t.cn/RDUAhrn',
       overlay: true,
       baseInfo: {},
       otherWork: [],
@@ -265,7 +266,7 @@ export default {
     callPhone (val) {
       Cain.callPhone(this.baseInfo.mobilePhone)
     },
-    showDialog (type) {
+    showDialog () {
       this.dialogStatus = true
     },
     closeDialog () {
@@ -273,7 +274,7 @@ export default {
     },
     // 打开赞赏码
     openZSCode () {
-      let url = 'https://www.tenbamboo.com/common/image/code.png'
+      let url = 'https://www.tenbamboo.com/common/image/code.jpg'
       wx.previewImage({
         current: url,
         urls: [url]
@@ -554,14 +555,6 @@ export default {
       background: rgba(41, 42, 43, 0.8);
       z-index: 100;
     }
-    .closeBtn {
-      width: 30px;
-      height: 30px;
-      position: fixed;
-      top: 15%;
-      right: 9%;
-      z-index: 1002;
-    }
     .dialog {
       padding: 10px;
       border-radius: 10px;
@@ -574,6 +567,33 @@ export default {
       top: 40%;
       left: 50%;
       transform: translate(-50%, -50%);
+      .closeBtn {
+        width: 30px;
+        height: 30px;
+        position: fixed;
+        top: -25px;
+        right: -25px;
+        z-index: 1002;
+      }
+      .input{
+        border-top:1px solid #e3e3e3;
+        border-bottom:1px solid #e3e3e3;
+        padding:5px;
+        margin-top: 10px;
+        margin-bottom: 20px;
+      }
+      p{
+        text-align: center;
+      }
+      a{
+        display: block;
+        text-align: center;
+        padding:10px;
+        margin-top: 40px;
+        border-radius: 6px;
+        background-color: #3eb94e;
+        color:#fff;
+      }
     }
   }
   .appreciateArea {
