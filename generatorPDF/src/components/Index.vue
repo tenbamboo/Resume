@@ -47,18 +47,30 @@
         <span>{{baseInfo.salary}}</span>
       </div>
     </div>
+     <!--证书 区域 -->
+    <div class="area certificateList">
+      <p class="title">我的证书</p>
+      <div class="content">
+        <div class="iconArea"
+          v-for="(item,index) in certificateList"
+          :key="'certificateList'+index">
+          <img :src="item.icon" />
+          <span>{{item.name}}</span>
+        </div>
+      </div>
+    </div>
     <!-- 工作经历 区域-->
     <div class="area">
       <p class="title">工作经验</p>
       <div class="accordion">
-        <div class="accordionItem" v-for="(item,index) in workList" :key="index">
+        <div class="accordionItem" v-for="(item,index) in workList" :key="'workList'+index">
           <p class="title" :class="item.isShow == true?'isShow':''" @click="toggleAccordionItem(item)">
             <span>{{item.title}}</span>
           </p>
 
           <div class="contentWrap" :class="item.isShow == true?'isShow':''" v-if="item.isShow == true">
             <div class="content">
-              <div v-for="(child,indexC) in item.projectList" :key="indexC">
+              <div v-for="(child,indexC) in item.projectList" :key="'projectList'+indexC">
                 <div class="hr"></div>
                 <div class="detail">
                   <font class="fontBold">项目名：</font>{{child.projectName}}
@@ -83,18 +95,15 @@
     <div class="area">
       <p class="title">其他作品</p>
       <div class="accordion">
-        <div class="accordionItem" v-for="(item,index) in otherWork" :key="index">
+        <div class="accordionItem" v-for="(item,index) in otherWork" :key="'otherWork'+index">
           <p class="title" :class="item.isShow == true?'isShow':''" @click="toggleAccordionItem(item)">
             <span>{{item.title}} {{item.projectList[0].projectName}}</span>
           </p>
 
           <div class="contentWrap" :class="item.isShow == true?'isShow':''" v-if="item.isShow == true">
             <div class="content">
-              <div v-for="(child,indexC) in item.projectList" :key="indexC">
+              <div v-for="(child,indexC) in item.projectList" :key="'skill'+indexC">
                 <div class="hr"></div>
-                <!-- <div class="detail">
-                  <font class="fontBold">项目名：</font>{{child.projectName}}
-                </div> -->
                 <div class="detail">
                   <font class="fontBold">介绍：</font>{{child.info}}
                 </div>
@@ -116,7 +125,7 @@
     <div class="skillList area">
       <p class="title">技能栈</p>
       <div class="content">
-        <div v-for="(item,index) in skillList" :key="index">{{item}}</div>
+        <div v-for="(item,index) in skillList" :key="'skill'+index">{{item}}</div>
       </div>
     </div>
 
@@ -124,10 +133,10 @@
     <div class="starList area">
       <p class="title">技能关键字</p>
       <div class="content">
-        <div class="item" v-for="(item,index) in starList" :key="index">
+        <div class="item" v-for="(item,index) in starList" :key="'star'+index">
           <span>{{item.name}}</span>
-          <img src="/static/image/star.png" v-for="(itemS,indexS) in item.star" :key="indexS" />
-          <img src="/static/image/star_e.png" v-for="(itemS1,indexS1) in (5-item.star)" :key="indexS1" />
+          <img src="/static/image/star.png" v-for="(itemS,indexS) in item.star" :key="'starS'+indexS" />
+          <img src="/static/image/star_e.png" v-for="(itemS1,indexS1) in (5-item.star)" :key="'starS1'+indexS1" />
         </div>
       </div>
     </div>
@@ -200,7 +209,7 @@
 import Cain from '@cain/'
 import myJson from '@/components/common/haze.liu.json'
 import html2canvas from 'html2canvas'
-import jsPDF from 'jsPDF'
+// import jsPDF from 'jsPDF'
 export default {
   data () {
     return {
@@ -210,6 +219,7 @@ export default {
       skillList: [],
       starList: [],
       workList: [],
+      certificateList: [],
       isShowContact: false,
       dialogStatus: false
     }
@@ -247,6 +257,7 @@ export default {
       this.skillList = res.skillList
       this.starList = res.starList
       this.isShowContact = res.isShowContact
+      this.certificateList = res.certificateList
       this.overlay = false
 
       // wx.hideLoading()
@@ -282,43 +293,45 @@ export default {
     },
     // 生成pdf
     async generatorPDF () {
-      const canvas = await html2canvas(document.getElementById('indexContainer'))
-      var contentWidth = canvas.width
-      var contentHeight = canvas.height
-
-      // 一页pdf显示html页面生成的canvas高度;
-      var pageHeight = contentWidth / 592.28 * 841.89
-      // 未生成pdf的html页面高度
-      var leftHeight = contentHeight
-      // 页面偏移
-      var position = 0
-      // a4纸的尺寸[595.28,841.89]，html页面生成的canvas在pdf中图片的宽高
-      var imgWidth = 595.28
-      var imgHeight = 592.28 / contentWidth * contentHeight
-
+      const canvas = await html2canvas(document.getElementById('indexContainer'), {
+        allowTaint: true, // 允许污染
+        taintTest: true // 在渲染前测试图片(没整明白有啥用)
+      })
       document.body.appendChild(canvas)
+      // var contentWidth = canvas.width
+      // var contentHeight = canvas.height
 
-      var pageData = canvas.toDataURL('image/jpeg', 1.0)
-      /* eslint new-cap: ["error", { "newIsCapExceptions": ["jsPDF"] }] */
-      var pdf = new jsPDF('', 'pt', 'a4')
+      // // 一页pdf显示html页面生成的canvas高度;
+      // var pageHeight = contentWidth / 592.28 * 841.89
+      // // 未生成pdf的html页面高度
+      // var leftHeight = contentHeight
+      // // 页面偏移
+      // var position = 0
+      // // a4纸的尺寸[595.28,841.89]，html页面生成的canvas在pdf中图片的宽高
+      // var imgWidth = 595.28
+      // var imgHeight = 592.28 / contentWidth * contentHeight
+      // var pageData = canvas.toDataURL('image/jpeg', 1.0)
 
-      // 有两个高度需要区分，一个是html页面的实际高度，和生成pdf的页面高度(841.89)
-      // 当内容未超过pdf一页显示的范围，无需分页
-      if (leftHeight < pageHeight) {
-        pdf.addImage(pageData, 'JPEG', 0, 0, imgWidth, imgHeight)
-      } else {
-        while (leftHeight > 0) {
-          pdf.addImage(pageData, 'JPEG', 0, position, imgWidth, imgHeight)
-          leftHeight -= pageHeight
-          position -= 841.89
-          // 避免添加空白页
-          if (leftHeight > 0) {
-            pdf.addPage()
-          }
-        }
-      }
+      // /* eslint new-cap: ["error", { "newIsCapExceptions": ["jsPDF"] }] */
+      // var pdf = new jsPDF('', 'pt', 'a4')
 
-      pdf.save('content.pdf')
+      // // 有两个高度需要区分，一个是html页面的实际高度，和生成pdf的页面高度(841.89)
+      // // 当内容未超过pdf一页显示的范围，无需分页
+      // if (leftHeight < pageHeight) {
+      //   pdf.addImage(pageData, 'JPEG', 0, 0, imgWidth, imgHeight)
+      // } else {
+      //   while (leftHeight > 0) {
+      //     pdf.addImage(pageData, 'JPEG', 0, position, imgWidth, imgHeight)
+      //     leftHeight -= pageHeight
+      //     position -= 841.89
+      //     // 避免添加空白页
+      //     if (leftHeight > 0) {
+      //       pdf.addPage()
+      //     }
+      //   }
+      // }
+
+      // pdf.save('haze.liu.pdf')
     }
   }
 }
@@ -440,7 +453,7 @@ export default {
     }
   }
 
-  .aboutMe {
+  .aboutMe,.certificateList  {
     .iconArea {
       margin-bottom: 10px;
       img {
@@ -625,6 +638,7 @@ export default {
   .viewCode{
     width: 100%;
     text-align: center;
+    box-sizing: border-box;
     img{
       margin-top: 10px;
     }
