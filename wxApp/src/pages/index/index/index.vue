@@ -1,17 +1,20 @@
 <template>
   <div class="indexContainer commonContainer">
 
-    <div class="overlay" v-if="overlay"></div>
+    <div class="overlay"
+      v-if="overlay"></div>
 
     <!-- banner 区域-->
     <div class="banner">
-      <img src="/static/image/head.jpg" class="head " />
+      <img src="/static/image/head.jpg"
+        class="head " />
       <div class="info ">
         <p class="titleResume">RESUME</p>
         <p class="enName">{{baseInfo.enName}}</p>
         <p class="title">{{baseInfo.title}}</p>
       </div>
-      <img src="/static/image/bg.jpg" class="bannerBg" />
+      <img src="/static/image/bg.jpg"
+        class="bannerBg" />
       <div class="bannerOverlay"></div>
     </div>
 
@@ -47,18 +50,37 @@
         <span>{{baseInfo.salary}}</span>
       </div>
     </div>
+    <!--证书 区域 -->
+    <div class="area certificateList">
+      <p class="title">我的证书</p>
+      <div class="content">
+        <div class="iconArea"
+          v-for="(item,index) in certificateList"
+          :key="index">
+          <img :src="item.icon" />
+          <span>{{item.name}}</span>
+        </div>
+      </div>
+    </div>
     <!-- 工作经历 区域-->
     <div class="area">
       <p class="title">工作经验</p>
       <div class="accordion">
-        <div class="accordionItem" v-for="(item,index) in workList" :key="index">
-          <p class="title" :class="item.isShow == true?'isShow':''" @click="toggleAccordionItem(item)">
+        <div class="accordionItem"
+          v-for="(item,index) in workList"
+          :key="index">
+          <p class="title"
+            :class="item.isShow == true?'isShow':''"
+            @click="toggleAccordionItem(item)">
             <span>{{item.title}}</span>
           </p>
 
-          <div class="contentWrap" :class="item.isShow == true?'isShow':''" v-if="item.isShow == true">
+          <div class="contentWrap"
+            :class="item.isShow == true?'isShow':''"
+            v-if="item.isShow == true">
             <div class="content">
-              <div v-for="(child,indexC) in item.projectList" :key="indexC">
+              <div v-for="(child,indexC) in item.projectList"
+                :key="indexC">
                 <div class="hr"></div>
                 <div class="detail">
                   <font class="fontBold">项目名：</font>{{child.projectName}}
@@ -83,14 +105,21 @@
     <div class="area">
       <p class="title">其他作品</p>
       <div class="accordion">
-        <div class="accordionItem" v-for="(item,index) in otherWork" :key="index">
-          <p class="title" :class="item.isShow == true?'isShow':''" @click="toggleAccordionItem(item)">
+        <div class="accordionItem"
+          v-for="(item,index) in otherWork"
+          :key="index">
+          <p class="title"
+            :class="item.isShow == true?'isShow':''"
+            @click="toggleAccordionItem(item)">
             <span>{{item.title}} {{item.projectList[0].projectName}}</span>
           </p>
 
-          <div class="contentWrap" :class="item.isShow == true?'isShow':''" v-if="item.isShow == true">
+          <div class="contentWrap"
+            :class="item.isShow == true?'isShow':''"
+            v-if="item.isShow == true">
             <div class="content">
-              <div v-for="(child,indexC) in item.projectList" :key="indexC">
+              <div v-for="(child,indexC) in item.projectList"
+                :key="indexC">
                 <div class="hr"></div>
                 <!-- <div class="detail">
                   <font class="fontBold">项目名：</font>{{child.projectName}}
@@ -116,7 +145,9 @@
     <div class="skillList area">
       <p class="title">技能栈</p>
       <div class="content">
-        <div class="item" v-for="(item,index) in skillList" :key="index">{{item}}</div>
+        <div class="item"
+          v-for="(item,index) in skillList"
+          :key="index">{{item}}</div>
       </div>
     </div>
 
@@ -124,34 +155,46 @@
     <div class="starList area">
       <p class="title">技能关键字</p>
       <div class="content">
-        <div class="item" v-for="(item,index) in starList" :key="index">
+        <div class="item"
+          v-for="(item,index) in starList"
+          :key="index">
           <span>{{item.name}}</span>
-          <img src="/static/image/star.png" v-for="(itemS,indexS) in item.star" :key="indexS" />
-          <img src="/static/image/star_e.png" v-for="(itemS1,indexS1) in (5-item.star)" :key="indexS1" />
+          <img src="/static/image/star.png"
+            v-for="(itemS,indexS) in item.star"
+            :key="indexS" />
+          <img src="/static/image/star_e.png"
+            v-for="(itemS1,indexS1) in (5-item.star)"
+            :key="indexS1" />
         </div>
       </div>
     </div>
     <div class="contactList area">
       <p class="title">联系方式</p>
-      <div class="haveData content" v-if="isShowContact">
-        <div class="iconArea" @click="callPhone()">
+      <div class="haveData content"
+        v-if="isShowContact">
+        <div class="iconArea"
+          @click="callPhone()">
           <img src="/static/image/icon8.png" />
           <span class="link">{{baseInfo.mobilePhone}}</span>
         </div>
-        <div class="iconArea" @click="setClipboard(baseInfo.email)">
+        <div class="iconArea"
+          @click="setClipboard(baseInfo.email)">
           <img src="/static/image/icon9.png" />
           <span class="link">{{baseInfo.email}}</span>
         </div>
-        <div class="iconArea" @click="setClipboard(baseInfo.wechatNo)">
+        <div class="iconArea"
+          @click="setClipboard(baseInfo.wechatNo)">
           <img src="/static/image/icon10.png" />
           <span class="link">{{baseInfo.wechatNo}}</span>
         </div>
-        <div class="iconArea" @click="setClipboard(baseInfo.githubUrl)">
+        <div class="iconArea"
+          @click="setClipboard(baseInfo.githubUrl)">
           <img src="/static/image/icon11.png" />
           <span class="link">{{baseInfo.githubUrl}}</span>
         </div>
       </div>
-      <div class="noData content" v-if="!isShowContact">
+      <div class="noData content"
+        v-if="!isShowContact">
         <img src="/static/image/icon12.png" />
         <p>作者暂时隐藏了联系方式，可能最近没有找工作的想法</p>
       </div>
@@ -171,12 +214,15 @@
       <p class="title">您还可以</p>
       <div class="content">
         <div class="flex">
-          <button class="appreciateBtn" @click="openZSCode"><img src="/static/image/appreciate.png" />赞赏一下</button>
-          <button open-type="share" class="shareBtn"><img src="/static/image/share.png" />分享一下</button>
+          <button class="appreciateBtn"
+            @click="openZSCode"><img src="/static/image/appreciate.png" />赞赏一下</button>
+          <button open-type="share"
+            class="shareBtn"><img src="/static/image/share.png" />分享一下</button>
         </div>
 
         <div class="flex">
-          <button class="downPDF" @click="showDialog"><img src="/static/image/pdf.png" />下载PDF简历</button>
+          <button class="downPDF"
+            @click="showDialog"><img src="/static/image/pdf.png" />下载PDF简历</button>
         </div>
 
       </div>
@@ -184,14 +230,21 @@
 
     <div class="powerBy">
       Powered By
-      <span class="link" @click="setClipboard('@tenbamboo/Resume')">GitHub : @tenbamboo/Resume</span>
+      <span class="link"
+        @click="setClipboard('@tenbamboo/Resume')">GitHub : @tenbamboo/Resume</span>
     </div>
 
-    <div class="dialogWrap" v-if="dialogStatus">
+    <div class="dialogWrap"
+      v-if="dialogStatus">
       <div class="dialogOverlay"></div>
       <div class="dialog">
-        <img src="/static/image/close.png" @click="closeDialog" class="closeBtn" />
-        <input class="input" type="text" readonly="readonly" v-model="pdfUrl" />
+        <img src="/static/image/close.png"
+          @click="closeDialog"
+          class="closeBtn" />
+        <input class="input"
+          type="text"
+          readonly="readonly"
+          v-model="pdfUrl" />
         <p>请复制链接，并在PC端下载。</p>
         <a @click="setClipboard(pdfUrl)">复制</a>
       </div>
@@ -207,6 +260,7 @@ export default {
       pdfUrl: 'http://t.cn/RDUAhrn',
       overlay: true,
       baseInfo: {},
+      certificateList: [],
       otherWork: [],
       skillList: [],
       starList: [],
@@ -233,7 +287,6 @@ export default {
       // 远程方式
       // const self = this
       const res = await Cain.post('haze.liu.json')
-      console.log(res)
       this.baseInfo = res.baseInfo
 
       for (let item of res.workList) {
@@ -246,6 +299,7 @@ export default {
       this.otherWork = res.otherWork
       this.skillList = res.skillList
       this.starList = res.starList
+      this.certificateList = res.certificateList
       this.isShowContact = res.isShowContact
       this.overlay = false
 
@@ -400,7 +454,7 @@ export default {
     }
   }
 
-  .aboutMe {
+  .aboutMe,.certificateList {
     .iconArea {
       margin-bottom: 10px;
       img {
@@ -575,24 +629,24 @@ export default {
         right: -25px;
         z-index: 1002;
       }
-      .input{
-        border-top:1px solid #e3e3e3;
-        border-bottom:1px solid #e3e3e3;
-        padding:5px;
+      .input {
+        border-top: 1px solid #e3e3e3;
+        border-bottom: 1px solid #e3e3e3;
+        padding: 5px;
         margin-top: 10px;
         margin-bottom: 20px;
       }
-      p{
+      p {
         text-align: center;
       }
-      a{
+      a {
         display: block;
         text-align: center;
-        padding:10px;
+        padding: 10px;
         margin-top: 40px;
         border-radius: 6px;
         background-color: #3eb94e;
-        color:#fff;
+        color: #fff;
       }
     }
   }
