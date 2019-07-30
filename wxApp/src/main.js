@@ -27,7 +27,7 @@ export default {
       'backgroundTextStyle': 'light',
       'navigationBarBackgroundColor': '#303538',
       'navigationBarTitleText': '心远个人简历',
-      'navigationBarTextStyle': 'light'
+      'navigationBarTextStyle': 'white'
     }
     // tabBar: {
     //   color: '#000000',

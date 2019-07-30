@@ -1,17 +1,29 @@
 ﻿<template>
-  <div class="indexContainer commonContainer" id="indexContainer">
+  <div
+    class="indexContainer commonContainer"
+    id="indexContainer"
+  >
 
-    <div class="overlay" v-if="overlay"></div>
+    <div
+      class="overlay"
+      v-if="overlay"
+    ></div>
 
     <!-- banner 区域-->
     <div class="banner">
-      <img src="/static/image/head.jpg" class="head " />
+      <img
+        src="/static/image/head.jpg"
+        class="head "
+      />
       <div class="info ">
         <p class="titleResume">RESUME</p>
         <p class="enName">{{baseInfo.enName}}</p>
         <p class="title">{{baseInfo.title}}</p>
       </div>
-      <img src="/static/image/bg.jpg" class="bannerBg" />
+      <img
+        src="/static/image/bg.jpg"
+        class="bannerBg"
+      />
       <div class="bannerOverlay"></div>
     </div>
 
@@ -47,18 +59,46 @@
         <span>{{baseInfo.salary}}</span>
       </div>
     </div>
+    <div class="area certificateList">
+      <p class="title">我的证书</p>
+      <div class="content">
+        <div
+          class="iconArea"
+          v-for="(item,index) in certificateList"
+          :key="index"
+        >
+          <img :src="item.icon" />
+          <span>{{item.name}}</span>
+        </div>
+      </div>
+    </div>
     <!-- 工作经历 区域-->
     <div class="area">
       <p class="title">工作经验</p>
       <div class="accordion">
-        <div class="accordionItem" v-for="(item,index) in workList" :key="index">
-          <p class="title" :class="item.isShow == true?'isShow':''" @click="toggleAccordionItem(item)">
+        <div
+          class="accordionItem"
+          v-for="(item,index) in workList"
+          :key="index"
+        >
+          <p
+            class="title"
+            :class="item.isShow == true?'isShow':''"
+            @click="toggleAccordionItem(item)"
+          >
             <span>{{item.title}}</span>
           </p>
 
-          <div class="contentWrap" :class="item.isShow == true?'isShow':''" v-if="item.isShow == true">
+          <div
+            class="contentWrap"
+            :class="item.isShow == true?'isShow':''"
+            v-if="item.isShow == true"
+          >
             <div class="content">
-              <div v-for="(child,indexC) in item.projectList" :key="indexC">
+              <div
+                v-for="(child,indexC) in item.projectList"
+                :key="indexC"
+              >
                 <div class="hr"></div>
                 <div class="detail">
                   <font class="fontBold">项目名：</font>{{child.projectName}}
@@ -83,14 +123,29 @@
     <div class="area">
       <p class="title">其他作品</p>
       <div class="accordion">
-        <div class="accordionItem" v-for="(item,index) in otherWork" :key="index">
-          <p class="title" :class="item.isShow == true?'isShow':''" @click="toggleAccordionItem(item)">
+        <div
+          class="accordionItem"
+          v-for="(item,index) in otherWork"
+          :key="index"
+        >
+          <p
+            class="title"
+            :class="item.isShow == true?'isShow':''"
+            @click="toggleAccordionItem(item)"
+          >
             <span>{{item.title}} {{item.projectList[0].projectName}}</span>
           </p>
 
-          <div class="contentWrap" :class="item.isShow == true?'isShow':''" v-if="item.isShow == true">
+          <div
+            class="contentWrap"
+            :class="item.isShow == true?'isShow':''"
+            v-if="item.isShow == true"
+          >
             <div class="content">
-              <div v-for="(child,indexC) in item.projectList" :key="indexC">
+              <div
+                v-for="(child,indexC) in item.projectList"
+                :key="indexC"
+              >
                 <div class="hr"></div>
                 <!-- <div class="detail">
                   <font class="fontBold">项目名：</font>{{child.projectName}}
@@ -116,7 +171,10 @@
     <div class="skillList area">
       <p class="title">技能栈</p>
       <div class="content">
-        <div v-for="(item,index) in skillList" :key="index">{{item}}</div>
+        <div
+          v-for="(item,index) in skillList"
+          :key="index"
+        >{{item}}</div>
       </div>
     </div>
 
@@ -124,34 +182,64 @@
     <div class="starList area">
       <p class="title">技能关键字</p>
       <div class="content">
-        <div class="item" v-for="(item,index) in starList" :key="index">
+        <div
+          class="item"
+          v-for="(item,index) in starList"
+          :key="index"
+        >
           <span>{{item.name}}</span>
-          <img src="/static/image/star.png" v-for="(itemS,indexS) in item.star" :key="indexS" />
-          <img src="/static/image/star_e.png" v-for="(itemS1,indexS1) in (5-item.star)" :key="indexS1" />
+          <img
+            src="/static/image/star.png"
+            v-for="(itemS,indexS) in item.star"
+            :key="indexS"
+          />
+          <img
+            src="/static/image/star_e.png"
+            v-for="(itemS1,indexS1) in (5-item.star)"
+            :key="indexS1"
+          />
         </div>
       </div>
     </div>
     <div class="contactList area">
       <p class="title">联系方式</p>
-      <div class="haveData content" v-if="isShowContact">
-        <div class="iconArea" @click="callPhone()">
+      <div
+        class="haveData content"
+        v-if="isShowContact"
+      >
+        <div
+          class="iconArea"
+          @click="callPhone()"
+        >
           <img src="/static/image/icon8.png" />
           <span class="link">{{baseInfo.mobilePhone}}</span>
         </div>
-        <div class="iconArea" @click="setClipboard(baseInfo.email)">
+        <div
+          class="iconArea"
+          @click="setClipboard(baseInfo.email)"
+        >
           <img src="/static/image/icon9.png" />
           <span class="link">{{baseInfo.email}}</span>
         </div>
-        <div class="iconArea" @click="setClipboard(baseInfo.wechatNo)">
+        <div
+          class="iconArea"
+          @click="setClipboard(baseInfo.wechatNo)"
+        >
           <img src="/static/image/icon10.png" />
           <span class="link">{{baseInfo.wechatNo}}</span>
         </div>
-        <div class="iconArea" @click="setClipboard(baseInfo.githubUrl)">
+        <div
+          class="iconArea"
+          @click="setClipboard(baseInfo.githubUrl)"
+        >
           <img src="/static/image/icon11.png" />
           <span class="link">{{baseInfo.githubUrl}}</span>
         </div>
       </div>
-      <div class="noData content" v-if="!isShowContact">
+      <div
+        class="noData content"
+        v-if="!isShowContact"
+      >
         <img src="/static/image/icon12.png" />
         <p>作者暂时隐藏了联系方式，可能最近没有找工作的想法</p>
       </div>
@@ -169,7 +257,7 @@
 
     <div class="area viewCode">
       <p>扫码在线查看</p>
-      <img src="/static/image/viewCode.jpg"/>
+      <img src="/static/image/viewCode.jpg" />
 
     </div>
 
@@ -188,66 +276,71 @@
       </div>
     </div> -->
 
-    <div class="powerBy" @click="generatorPDF">
+    <div
+      class="powerBy"
+      @click="generatorPDF"
+    >
       Powered By
-      <span class="link" >GitHub : @tenbamboo/Resume</span>
+      <span class="link">GitHub : @tenbamboo/Resume</span>
     </div>
 
   </div>
 </template>
 
 <script>
-import Cain from '@cain/'
-import myJson from '@/components/common/haze.liu.json'
-import html2canvas from 'html2canvas'
-import jsPDF from 'jsPDF'
+import Cain from "@cain/";
+import myJson from "@/components/common/haze.liu.json";
+import html2canvas from "html2canvas";
+import jsPDF from "jsPDF";
 export default {
-  data () {
+  data() {
     return {
       overlay: true,
       baseInfo: {},
+      certificateList: [],
       otherWork: [],
       skillList: [],
       starList: [],
       workList: [],
       isShowContact: false,
       dialogStatus: false
-    }
+    };
   },
-  async created () {
+  async created() {
     // wx.showLoading({
     //   title: '加载中',
     //   mask: true
     // })
   },
-  async mounted () {
-    this.getData()
+  async mounted() {
+    this.getData();
   },
   methods: {
     // 获取数据
-    async getData () {
+    async getData() {
       // 本地方式
       // this.setData(LocalData)
 
       // 远程方式
       // const self = this
       // const res = await Cain.post('haze.liu.json')
-      const res = myJson
-      console.log(res)
-      this.baseInfo = res.baseInfo
+      const res = myJson;
+      console.log(res);
+      this.baseInfo = res.baseInfo;
 
       for (let item of res.workList) {
-        item.isShow = true
+        item.isShow = true;
       }
       for (let item of res.otherWork) {
-        item.isShow = true
+        item.isShow = true;
       }
-      this.workList = res.workList
-      this.otherWork = res.otherWork
-      this.skillList = res.skillList
-      this.starList = res.starList
-      this.isShowContact = res.isShowContact
-      this.overlay = false
+      this.workList = res.workList;
+      this.otherWork = res.otherWork;
+      this.skillList = res.skillList;
+      this.starList = res.starList;
+      this.certificateList = res.certificateList;
+      this.isShowContact = res.isShowContact;
+      this.overlay = false;
 
       // wx.hideLoading()
 
@@ -255,25 +348,25 @@ export default {
       //   withShareTicket: true
       // })
     },
-    toggleAccordionItem (item) {
-      item.isShow = !item.isShow
+    toggleAccordionItem(item) {
+      item.isShow = !item.isShow;
     },
     // 设置剪切板内容
-    setClipboard (val) {
-      Cain.setClipboard(val)
+    setClipboard(val) {
+      Cain.setClipboard(val);
     },
     // 打电话
-    callPhone (val) {
-      Cain.callPhone(this.baseInfo.mobilePhone)
+    callPhone(val) {
+      Cain.callPhone(this.baseInfo.mobilePhone);
     },
-    showDialog (type) {
-      this.dialogStatus = true
+    showDialog(type) {
+      this.dialogStatus = true;
     },
-    closeDialog () {
-      this.dialogStatus = false
+    closeDialog() {
+      this.dialogStatus = false;
     },
     // 打开赞赏码
-    openZSCode () {
+    openZSCode() {
       // let url = 'https://www.tenbamboo.com/common/image/code.png'
       // wx.previewImage({
       //   current: url,
@@ -281,47 +374,49 @@ export default {
       // })
     },
     // 生成pdf
-    async generatorPDF () {
-      const canvas = await html2canvas(document.getElementById('indexContainer'))
-      var contentWidth = canvas.width
-      var contentHeight = canvas.height
+    async generatorPDF() {
+      const canvas = await html2canvas(
+        document.getElementById("indexContainer")
+      );
+      var contentWidth = canvas.width;
+      var contentHeight = canvas.height;
 
       // 一页pdf显示html页面生成的canvas高度;
-      var pageHeight = contentWidth / 592.28 * 841.89
+      var pageHeight = (contentWidth / 592.28) * 841.89;
       // 未生成pdf的html页面高度
-      var leftHeight = contentHeight
+      var leftHeight = contentHeight;
       // 页面偏移
-      var position = 0
+      var position = 0;
       // a4纸的尺寸[595.28,841.89]，html页面生成的canvas在pdf中图片的宽高
-      var imgWidth = 595.28
-      var imgHeight = 592.28 / contentWidth * contentHeight
+      var imgWidth = 595.28;
+      var imgHeight = (592.28 / contentWidth) * contentHeight;
 
-      document.body.appendChild(canvas)
+      document.body.appendChild(canvas);
 
-      var pageData = canvas.toDataURL('image/jpeg', 1.0)
+      var pageData = canvas.toDataURL("image/jpeg", 1.0);
       /* eslint new-cap: ["error", { "newIsCapExceptions": ["jsPDF"] }] */
-      var pdf = new jsPDF('', 'pt', 'a4')
+      var pdf = new jsPDF("", "pt", "a4");
 
       // 有两个高度需要区分，一个是html页面的实际高度，和生成pdf的页面高度(841.89)
       // 当内容未超过pdf一页显示的范围，无需分页
       if (leftHeight < pageHeight) {
-        pdf.addImage(pageData, 'JPEG', 0, 0, imgWidth, imgHeight)
+        pdf.addImage(pageData, "JPEG", 0, 0, imgWidth, imgHeight);
       } else {
         while (leftHeight > 0) {
-          pdf.addImage(pageData, 'JPEG', 0, position, imgWidth, imgHeight)
-          leftHeight -= pageHeight
-          position -= 841.89
+          pdf.addImage(pageData, "JPEG", 0, position, imgWidth, imgHeight);
+          leftHeight -= pageHeight;
+          position -= 841.89;
           // 避免添加空白页
           if (leftHeight > 0) {
-            pdf.addPage()
+            pdf.addPage();
           }
         }
       }
 
-      pdf.save('content.pdf')
+      pdf.save("content.pdf");
     }
   }
-}
+};
 </script>
 
 <style scoped lang="scss">
@@ -440,7 +535,8 @@ export default {
     }
   }
 
-  .aboutMe {
+  .aboutMe,
+  .certificateList {
     .iconArea {
       margin-bottom: 10px;
       img {
@@ -622,10 +718,10 @@ export default {
       width: 100%;
     }
   }
-  .viewCode{
+  .viewCode {
     width: 100%;
     text-align: center;
-    img{
+    img {
       margin-top: 10px;
     }
   }

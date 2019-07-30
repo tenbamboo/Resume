@@ -1,8 +1,31 @@
 {
     "isShowContact": true,
+    "certificateList": [
+        {
+            "name": "PMI-ACP(敏捷认证)",
+            "icon": "/static/image/iconAgile.png"
+        }
+    ],
     "workList": [
         {
-            "title": "倍通健康（2017年9月~至今）",
+            "title": "IBM（2018年9月~至今）",
+            "projectList": [
+                {
+                    "projectName": "中国移动供应链系统",
+                    "duty": "前端TL",
+                    "info": "二次封装ElementUI组件，编写业务代码，协助解答其他伙伴的前端技术问题",
+                    "skill": "Java,微服务,Vue,ElementUI"
+                },
+                {
+                    "projectName": "华为内部项目",
+                    "duty": "前端TL、Scrum master",
+                    "info": "管理并查看整个CBG产品线的生命周期，通过敏捷的方式与团队成员一起合作完成项目。编写符合项目的共通组件",
+                    "skill": "Java,微服务,Vue,ElementUI"
+                }
+            ]
+        },
+        {
+            "title": "倍通健康（2017年9月~2018年9月）",
             "projectList": [
                 {
                     "projectName": "医学众包",
@@ -107,6 +130,17 @@
     ],
     "otherWork": [
         {
+            "title": "大连红娘",
+            "projectList": [
+                {
+                    "projectName": "本地相亲交友平台（公众号）",
+                    "duty": "独立前端开发",
+                    "info": "大连本地相亲交友平台",
+                    "skill": "Vue,Java"
+                }
+            ]
+        },
+        {
             "title": "嗖嗖汽配",
             "projectList": [
                 {
@@ -140,17 +174,6 @@
             ]
         },
         {
-            "title": "大连红娘",
-            "projectList": [
-                {
-                    "projectName": "本地相亲交友平台（公众号）",
-                    "duty": "独立前端开发",
-                    "info": "大连本地相亲交友平台",
-                    "skill": "Vue,Java"
-                }
-            ]
-        },
-        {
             "title": "51惠补",
             "projectList": [
                 {
@@ -168,10 +191,10 @@
         "nameAndSex": "刘心远 / 男",
         "birthday": "1989/10/14",
         "diplomaAndSchool": "本科 / 大连海洋大学计算机系",
-        "workAge": "5年",
+        "workAge": "6年",
         "location": "大连",
         "wantPosition": "前端工程师、全栈工程师",
-        "salary": "12.5K ~ 15K",
+        "salary": "15.5K ~ 17K",
         "mobilePhone": "13478670140",
         "email": "liu19891014@163.com",
         "wechatNo": "mc_fly",
@@ -179,10 +202,11 @@
         "githubUrl": "https://github.com/tenbamboo"
     },
     "skillList": [
+        "前端框架： Vue / Jquery / AngularJS / React",
         "Web开发：Java / NodeJs",
         "Web框架：SSI / express",
-        "CSS框架：Bootstrap / PureCSS / SASS",
-        "JS框架：Jquery / AngularJS / Vue",
+        "CSS框架：Bootstrap  / ElementUI",
+        "CSS预处理器：Sass / LESS / Stylus",
         "构建工具：Webpack / Bower  / Grunt ",
         "Hybird开发：Cordova / Ionic",
         "数据库相关：MySQL / Oracle / IndexedDB",
