@@ -1,5 +1,4 @@
 import SparkMD5 from 'spark-md5'
-import wx from 'weixin-js-sdk'
 /**
  * @todo Cain工具包
  * @namespace Cain
@@ -527,84 +526,84 @@ export default {
    * @memberof Cain
    * @param {Object} httpWX 请求实例
    */
-  getWeChatToken (httpWX) {
-    return new Promise(async (resolve, reject) => {
-      let p = {}
-      p.u = location.origin + location.pathname
-      p.j = '"chooseImage","uploadImage","scanQRCode","openLocation","onMenuShareAppMessage","onMenuShareTimeline","closeWindow"'
-      // 'checkJsApi', 'previewImage', 'closeWindow', 'scanQRCode', 'previewImage', 'onMenuShareAppMessage', 'chooseWXPay', 'addCard', 'chooseCard', 'openCard'
-      const res = await httpWX.post('wxsr/getWXJSConfig', p)
-      let qqx = JSON.parse(res.data)
-      qqx.debug = false
-      wx.config(qqx)
-      wx.ready(() => {
-        resolve()
-      })
-      wx.error(() => {
-        reject(new Error('wxJSAPI Error!!!!!!'))
-      })
-    })
-  },
-  /**
-  * @public
-  * @function
-  * @todo  分享
-  * @memberof Cain
-  * @param {Object} param
-  * @param {String} param.title 分享标题
-  * @param {String} param.desc 分享描述
-  * @param {String} param.icon 分享Icon
-  * @param {String} param.link 分享link
-  */
-  shareFormWeChat (param) {
-    return new Promise(async (resolve, reject) => {
-      if (this.isBlank(param)) {
-        param = {}
-      }
-      let shareTitle = param.title || '臻爱糖友社区'
-      let shareDesc = param.desc || document.title
-      if (shareDesc != null) {
-        shareDesc = shareDesc.substring(0, 80)
-      }
+  // getWeChatToken (httpWX) {
+  //   return new Promise(async (resolve, reject) => {
+  //     let p = {}
+  //     p.u = location.origin + location.pathname
+  //     p.j = '"chooseImage","uploadImage","scanQRCode","openLocation","onMenuShareAppMessage","onMenuShareTimeline","closeWindow"'
+  //     // 'checkJsApi', 'previewImage', 'closeWindow', 'scanQRCode', 'previewImage', 'onMenuShareAppMessage', 'chooseWXPay', 'addCard', 'chooseCard', 'openCard'
+  //     const res = await httpWX.post('wxsr/getWXJSConfig', p)
+  //     let qqx = JSON.parse(res.data)
+  //     qqx.debug = false
+  //     wx.config(qqx)
+  //     wx.ready(() => {
+  //       resolve()
+  //     })
+  //     wx.error(() => {
+  //       reject(new Error('wxJSAPI Error!!!!!!'))
+  //     })
+  //   })
+  // },
+  // /**
+  // * @public
+  // * @function
+  // * @todo  分享
+  // * @memberof Cain
+  // * @param {Object} param
+  // * @param {String} param.title 分享标题
+  // * @param {String} param.desc 分享描述
+  // * @param {String} param.icon 分享Icon
+  // * @param {String} param.link 分享link
+  // */
+  // shareFormWeChat (param) {
+  //   return new Promise(async (resolve, reject) => {
+  //     if (this.isBlank(param)) {
+  //       param = {}
+  //     }
+  //     let shareTitle = param.title || '臻爱糖友社区'
+  //     let shareDesc = param.desc || document.title
+  //     if (shareDesc != null) {
+  //       shareDesc = shareDesc.substring(0, 80)
+  //     }
 
-      let ctx = window.location.protocol + '//' + window.location.host
-      let shareImage = param.icon || ctx + '/dcn/static/img/logo_share.jpg'
-      let shareLink = param.link || location.href
+  //     let ctx = window.location.protocol + '//' + window.location.host
+  //     let shareImage = param.icon || ctx + '/dcn/static/img/logo_share.jpg'
+  //     let shareLink = param.link || location.href
 
-      // 添加openid参数
-      if (shareLink != null && shareLink.indexOf('?') > 0) {
-        shareLink += '&'
-      } else {
-        shareLink += '?'
-      }
+  //     // 添加openid参数
+  //     if (shareLink != null && shareLink.indexOf('?') > 0) {
+  //       shareLink += '&'
+  //     } else {
+  //       shareLink += '?'
+  //     }
 
-      wx.onMenuShareAppMessage({
-        title: shareTitle, // 分享标题
-        desc: shareDesc, // 分享描述
-        link: shareLink, // 分享链接
-        imgUrl: shareImage, // 分享图标
-        type: '', // 分享类型,music、video或link，不填默认为link
-        dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
-        success: function () {
-          resolve()
-        },
-        cancel: function () {
-          reject(new Error('用户取消'))
-        }
-      })
-      wx.onMenuShareTimeline({
-        title: shareTitle, // 分享标题
-        link: shareLink, // 分享链接
-        imgUrl: shareImage, // 分享图标
-        success: function () {
-          resolve()
-        },
-        cancel: function () {
-          reject(new Error('用户取消'))
-        }
-      })
-    })
-  },
+  //     wx.onMenuShareAppMessage({
+  //       title: shareTitle, // 分享标题
+  //       desc: shareDesc, // 分享描述
+  //       link: shareLink, // 分享链接
+  //       imgUrl: shareImage, // 分享图标
+  //       type: '', // 分享类型,music、video或link，不填默认为link
+  //       dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+  //       success: function () {
+  //         resolve()
+  //       },
+  //       cancel: function () {
+  //         reject(new Error('用户取消'))
+  //       }
+  //     })
+  //     wx.onMenuShareTimeline({
+  //       title: shareTitle, // 分享标题
+  //       link: shareLink, // 分享链接
+  //       imgUrl: shareImage, // 分享图标
+  //       success: function () {
+  //         resolve()
+  //       },
+  //       cancel: function () {
+  //         reject(new Error('用户取消'))
+  //       }
+  //     })
+  //   })
+  // },
   //   /**
   // * @public
   // * @function
@@ -636,44 +635,44 @@ export default {
   //       })
   //     })
   //   },
-  /**
-* @public
-* @function
-* @todo 预览图片
-* @memberof Cain
-* @return  promise对象
-*/
-  preview (current, urls) {
-    if (this.isBlank(urls)) {
-      urls = [current]
-    }
-    wx.previewImage({
-      current: current,
-      urls: urls
-    })
-  },
-  /**
-* @public
-* @function
-* @todo 获取经纬度信息
-* @memberof Cain
-* @return  promise对象
-*/
-  getLocation () {
-    return new Promise(async (resolve, reject) => {
-      wx.getLocation({
-        type: 'wgs84',
-        success: function (res) {
-          let latitude = res.latitude // 纬度，浮点数，范围为90 ~ -90
-          let longitude = res.longitude // 经度，浮点数，范围为180 ~ -180。
-          resolve({
-            latitude,
-            longitude
-          })
-        }
-      })
-    })
-  },
+  //   /**
+  // * @public
+  // * @function
+  // * @todo 预览图片
+  // * @memberof Cain
+  // * @return  promise对象
+  // */
+  //   preview (current, urls) {
+  //     if (this.isBlank(urls)) {
+  //       urls = [current]
+  //     }
+  //     wx.previewImage({
+  //       current: current,
+  //       urls: urls
+  //     })
+  //   },
+  //   /**
+  // * @public
+  // * @function
+  // * @todo 获取经纬度信息
+  // * @memberof Cain
+  // * @return  promise对象
+  // */
+  //   getLocation () {
+  //     return new Promise(async (resolve, reject) => {
+  //       wx.getLocation({
+  //         type: 'wgs84',
+  //         success: function (res) {
+  //           let latitude = res.latitude // 纬度，浮点数，范围为90 ~ -90
+  //           let longitude = res.longitude // 经度，浮点数，范围为180 ~ -180。
+  //           resolve({
+  //             latitude,
+  //             longitude
+  //           })
+  //         }
+  //       })
+  //     })
+  //   },
   /**
 * @public
 * @function

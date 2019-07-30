@@ -59,13 +59,14 @@
         <span>{{baseInfo.salary}}</span>
       </div>
     </div>
+    <!--证书 区域 -->
     <div class="area certificateList">
       <p class="title">我的证书</p>
       <div class="content">
         <div
           class="iconArea"
           v-for="(item,index) in certificateList"
-          :key="index"
+          :key="'certificateList'+index"
         >
           <img :src="item.icon" />
           <span>{{item.name}}</span>
@@ -79,7 +80,7 @@
         <div
           class="accordionItem"
           v-for="(item,index) in workList"
-          :key="index"
+          :key="'workList'+index"
         >
           <p
             class="title"
@@ -97,7 +98,7 @@
             <div class="content">
               <div
                 v-for="(child,indexC) in item.projectList"
-                :key="indexC"
+                :key="'projectList'+indexC"
               >
                 <div class="hr"></div>
                 <div class="detail">
@@ -126,7 +127,7 @@
         <div
           class="accordionItem"
           v-for="(item,index) in otherWork"
-          :key="index"
+          :key="'otherWork'+index"
         >
           <p
             class="title"
@@ -144,12 +145,9 @@
             <div class="content">
               <div
                 v-for="(child,indexC) in item.projectList"
-                :key="indexC"
+                :key="'skill'+indexC"
               >
                 <div class="hr"></div>
-                <!-- <div class="detail">
-                  <font class="fontBold">项目名：</font>{{child.projectName}}
-                </div> -->
                 <div class="detail">
                   <font class="fontBold">介绍：</font>{{child.info}}
                 </div>
@@ -173,7 +171,7 @@
       <div class="content">
         <div
           v-for="(item,index) in skillList"
-          :key="index"
+          :key="'skill'+index"
         >{{item}}</div>
       </div>
     </div>
@@ -185,18 +183,18 @@
         <div
           class="item"
           v-for="(item,index) in starList"
-          :key="index"
+          :key="'star'+index"
         >
           <span>{{item.name}}</span>
           <img
             src="/static/image/star.png"
             v-for="(itemS,indexS) in item.star"
-            :key="indexS"
+            :key="'starS'+indexS"
           />
           <img
             src="/static/image/star_e.png"
             v-for="(itemS1,indexS1) in (5-item.star)"
-            :key="indexS1"
+            :key="'starS1'+indexS1"
           />
         </div>
       </div>
@@ -302,6 +300,7 @@ export default {
       skillList: [],
       starList: [],
       workList: [],
+      certificateList: [],
       isShowContact: false,
       dialogStatus: false
     };
@@ -534,7 +533,6 @@ export default {
       }
     }
   }
-
   .aboutMe,
   .certificateList {
     .iconArea {
@@ -721,7 +719,8 @@ export default {
   .viewCode {
     width: 100%;
     text-align: center;
-    img {
+    box-sizing: border-box;
+    img{
       margin-top: 10px;
     }
   }
