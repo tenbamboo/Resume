@@ -286,16 +286,15 @@
 </template>
 
 <script>
-import Cain from "@cain/";
-import myJson from "@/components/common/haze.liu.json";
-import html2canvas from "html2canvas";
-import jsPDF from "jsPDF";
+import Cain from '@cain/'
+import myJson from '@/components/common/haze.liu.json'
+import html2canvas from 'html2canvas'
+import jsPDF from 'jsPDF'
 export default {
-  data() {
+  data () {
     return {
       overlay: true,
       baseInfo: {},
-      certificateList: [],
       otherWork: [],
       skillList: [],
       starList: [],
@@ -303,43 +302,43 @@ export default {
       certificateList: [],
       isShowContact: false,
       dialogStatus: false
-    };
+    }
   },
-  async created() {
+  async created () {
     // wx.showLoading({
     //   title: '加载中',
     //   mask: true
     // })
   },
-  async mounted() {
-    this.getData();
+  async mounted () {
+    this.getData()
   },
   methods: {
     // 获取数据
-    async getData() {
+    async getData () {
       // 本地方式
       // this.setData(LocalData)
 
       // 远程方式
       // const self = this
       // const res = await Cain.post('haze.liu.json')
-      const res = myJson;
-      console.log(res);
-      this.baseInfo = res.baseInfo;
+      const res = myJson
+      console.log(res)
+      this.baseInfo = res.baseInfo
 
       for (let item of res.workList) {
-        item.isShow = true;
+        item.isShow = true
       }
       for (let item of res.otherWork) {
-        item.isShow = true;
+        item.isShow = true
       }
-      this.workList = res.workList;
-      this.otherWork = res.otherWork;
-      this.skillList = res.skillList;
-      this.starList = res.starList;
-      this.certificateList = res.certificateList;
-      this.isShowContact = res.isShowContact;
-      this.overlay = false;
+      this.workList = res.workList
+      this.otherWork = res.otherWork
+      this.skillList = res.skillList
+      this.starList = res.starList
+      this.certificateList = res.certificateList
+      this.isShowContact = res.isShowContact
+      this.overlay = false
 
       // wx.hideLoading()
 
@@ -347,25 +346,25 @@ export default {
       //   withShareTicket: true
       // })
     },
-    toggleAccordionItem(item) {
-      item.isShow = !item.isShow;
+    toggleAccordionItem (item) {
+      item.isShow = !item.isShow
     },
     // 设置剪切板内容
-    setClipboard(val) {
-      Cain.setClipboard(val);
+    setClipboard (val) {
+      Cain.setClipboard(val)
     },
     // 打电话
-    callPhone(val) {
-      Cain.callPhone(this.baseInfo.mobilePhone);
+    callPhone (val) {
+      Cain.callPhone(this.baseInfo.mobilePhone)
     },
-    showDialog(type) {
-      this.dialogStatus = true;
+    showDialog (type) {
+      this.dialogStatus = true
     },
-    closeDialog() {
-      this.dialogStatus = false;
+    closeDialog () {
+      this.dialogStatus = false
     },
     // 打开赞赏码
-    openZSCode() {
+    openZSCode () {
       // let url = 'https://www.tenbamboo.com/common/image/code.png'
       // wx.previewImage({
       //   current: url,
@@ -373,49 +372,50 @@ export default {
       // })
     },
     // 生成pdf
-    async generatorPDF() {
+    async generatorPDF () {
+      //宽度设置成650左右！！！！！！！再生成
       const canvas = await html2canvas(
-        document.getElementById("indexContainer")
-      );
-      var contentWidth = canvas.width;
-      var contentHeight = canvas.height;
+        document.getElementById('indexContainer')
+      )
 
-      // 一页pdf显示html页面生成的canvas高度;
-      var pageHeight = (contentWidth / 592.28) * 841.89;
+      document.body.appendChild(canvas)
+      var contentWidth = canvas.width
+      var contentHeight = canvas.height
+
+      // 一页pdf显示html页面生成的canvas高度
+      var pageHeight = (contentWidth / 592.28) * 841.89
       // 未生成pdf的html页面高度
-      var leftHeight = contentHeight;
+      var leftHeight = contentHeight
       // 页面偏移
-      var position = 0;
+      var position = 0
       // a4纸的尺寸[595.28,841.89]，html页面生成的canvas在pdf中图片的宽高
-      var imgWidth = 595.28;
-      var imgHeight = (592.28 / contentWidth) * contentHeight;
+      var imgWidth = 595.28
+      var imgHeight = (592.28 / contentWidth) * contentHeight
 
-      document.body.appendChild(canvas);
-
-      var pageData = canvas.toDataURL("image/jpeg", 1.0);
-      /* eslint new-cap: ["error", { "newIsCapExceptions": ["jsPDF"] }] */
-      var pdf = new jsPDF("", "pt", "a4");
+      var pageData = canvas.toDataURL('image/jpeg', 1.0)
+      /* eslint new-cap: ['error', { 'newIsCapExceptions': ['jsPDF'] }] */
+      var pdf = new jsPDF('', 'pt', 'a4')
 
       // 有两个高度需要区分，一个是html页面的实际高度，和生成pdf的页面高度(841.89)
       // 当内容未超过pdf一页显示的范围，无需分页
       if (leftHeight < pageHeight) {
-        pdf.addImage(pageData, "JPEG", 0, 0, imgWidth, imgHeight);
+        pdf.addImage(pageData, 'JPEG', 0, 0, imgWidth, imgHeight)
       } else {
         while (leftHeight > 0) {
-          pdf.addImage(pageData, "JPEG", 0, position, imgWidth, imgHeight);
-          leftHeight -= pageHeight;
-          position -= 841.89;
+          pdf.addImage(pageData, 'JPEG', 0, position, imgWidth, imgHeight)
+          leftHeight -= pageHeight
+          position -= 841.89
           // 避免添加空白页
           if (leftHeight > 0) {
-            pdf.addPage();
+            pdf.addPage()
           }
         }
       }
 
-      pdf.save("content.pdf");
+      pdf.save('content.pdf')
     }
   }
-};
+}
 </script>
 
 <style scoped lang="scss">
@@ -720,7 +720,7 @@ export default {
     width: 100%;
     text-align: center;
     box-sizing: border-box;
-    img{
+    img {
       margin-top: 10px;
     }
   }
