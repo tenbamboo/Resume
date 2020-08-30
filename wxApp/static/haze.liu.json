@@ -131,10 +131,9 @@
     "otherWork": [
         {
             "title": "翕宝",
-            "subTitle": "门户主页",
             "projectList": [
                 {
-                    "projectName": "翕宝-公益网站",
+                    "projectName": "公益售卖网站",
                     "duty": "独立前端开发",
                     "info": "帮助心智障碍者手工做出的工艺品售卖的网站",
                     "skill": "ElementUI,Vant,Vue,Java"
@@ -143,10 +142,9 @@
         },
         {
             "title": "大连红娘",
-            "subTitle": "微信公众号、微信小程序",
             "projectList": [
                 {
-                    "projectName": "本地相亲交友平台",
+                    "projectName": "微信公众号、微信小程序",
                     "duty": "独立前端开发",
                     "info": "大连本地相亲交友平台",
                     "skill": "ElementUI,Taro,Vant,Vue,Java"
@@ -154,11 +152,10 @@
             ]
         },
         {
-            "title": "奥园集团房地产全流程监控平台",
-            "subTitle": "管理平台",
+            "title": "奥园集团房地产",
             "projectList": [
                 {
-                    "projectName": "房地产全流程监控平台",
+                    "projectName": "全流程监控平台",
                     "duty": "独立前端开发",
                     "info": "房地产全流程监控平台",
                     "skill": "Antd,Vue,Java"
@@ -167,10 +164,9 @@
         },
         {
             "title": "飞鱼平台",
-            "subTitle": "管理平台",
             "projectList": [
                 {
-                    "projectName": "飞鱼平台APP内容分发",
+                    "projectName": "APP内容分发",
                     "duty": "独立前端开发",
                     "info": "APP内容分发",
                     "skill": "ElementUI,Vue,Java"
