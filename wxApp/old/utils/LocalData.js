@@ -106,8 +106,8 @@ const LocalData = {
     workAge: '5年', //工作年限
     location: '大连',  //工作地点
     wantPosition: '前端工程师、全栈工程师', //期望职位
-    salary: '12.5K ~ 15K', //期望薪酬
-    mobilePhone: '13478670140',//移动手机
+    salary: '120.5K ~ 150K', //期望薪酬
+    mobilePhone: '',//移动手机
     email: 'liu19891014@163.com',//邮箱
     wechatNo: 'mc_fly',//微信号
     github: '@tenbamboo', //github 用户名
