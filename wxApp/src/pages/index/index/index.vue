@@ -35,7 +35,7 @@
       </div>
       <div class="iconArea">
         <img src="/static/image/icon4.png" />
-        <span>{{baseInfo.workAge}} (工作年限)</span>
+        <span>{{baseInfo.firstWorkYearFormatter}} (工作年限)</span>
       </div>
       <div class="iconArea">
         <img src="/static/image/icon5.png" />
@@ -45,7 +45,7 @@
         <img src="/static/image/icon6.png" />
         <span>{{baseInfo.wantPosition}}</span>
       </div>
-      <div class="iconArea">
+      <div class="iconArea" v-if="isShowSalary">
         <img src="/static/image/icon7.png" />
         <span>{{baseInfo.salary}}</span>
       </div>
@@ -266,7 +266,8 @@ export default {
       starList: [],
       workList: [],
       isShowContact: false,
-      dialogStatus: false
+      dialogStatus: false,
+      isShowSalary: false
     }
   },
   async created () {
@@ -278,15 +279,31 @@ export default {
   async mounted () {
     this.getData()
   },
+  filters: {
+
+  },
   methods: {
+    workAgeFilter (year) {
+      if (year) {
+        console.log('year', year)
+        const now = new Date()
+        const res = now.getFullYear() - year
+        if (res <= 0) {
+          return '未毕业'
+        }
+        return res + '年'
+      }
+      return '暂无'
+    },
     // 获取数据
     async getData () {
       // 本地方式
       // this.setData(LocalData)
       // 远程方式
       // const self = this
-      const res = await Cain.post('haze.liu.json')
+      const res = await Cain.post('haze.liu.json?uuid=' + Cain.getUUID())
       this.baseInfo = res.baseInfo
+      this.baseInfo.firstWorkYearFormatter = this.workAgeFilter(this.baseInfo.firstWorkYear)
       for (let item of res.workList) {
         item.isShow = false
       }
@@ -299,6 +316,7 @@ export default {
       this.starList = res.starList
       this.certificateList = res.certificateList
       this.isShowContact = res.isShowContact
+      this.isShowSalary = res.isShowSalary
       this.overlay = false
       wx.hideLoading()
       wx.showShareMenu({
