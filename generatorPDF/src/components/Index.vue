@@ -1,29 +1,21 @@
 ﻿<template>
-  <div
-    class="indexContainer commonContainer"
-    id="indexContainer"
-  >
+  <div class="indexContainer commonContainer"
+    id="indexContainer">
 
-    <div
-      class="overlay"
-      v-if="overlay"
-    ></div>
+    <div class="overlay"
+      v-if="overlay"></div>
 
     <!-- banner 区域-->
     <div class="banner">
-      <img
-        src="/static/image/head.jpg"
-        class="head "
-      />
+      <img src="/static/image/head.jpg"
+        class="head " />
       <div class="info ">
         <p class="titleResume">RESUME</p>
         <p class="enName">{{baseInfo.enName}}</p>
         <p class="title">{{baseInfo.title}}</p>
       </div>
-      <img
-        src="/static/image/bg.jpg"
-        class="bannerBg"
-      />
+      <img src="/static/image/bg.jpg"
+        class="bannerBg" />
       <div class="bannerOverlay"></div>
     </div>
 
@@ -54,20 +46,18 @@
         <img src="/static/image/icon6.png" />
         <span>{{baseInfo.wantPosition}}</span>
       </div>
-      <div class="iconArea">
+      <!-- <div class="iconArea">
         <img src="/static/image/icon7.png" />
         <span>{{baseInfo.salary}}</span>
-      </div>
+      </div> -->
     </div>
     <!--证书 区域 -->
     <div class="area certificateList">
       <p class="title">我的证书</p>
       <div class="content">
-        <div
-          class="iconArea"
+        <div class="iconArea"
           v-for="(item,index) in certificateList"
-          :key="'certificateList'+index"
-        >
+          :key="'certificateList'+index">
           <img :src="item.icon" />
           <span>{{item.name}}</span>
         </div>
@@ -77,29 +67,21 @@
     <div class="area">
       <p class="title">工作经验</p>
       <div class="accordion">
-        <div
-          class="accordionItem"
+        <div class="accordionItem"
           v-for="(item,index) in workList"
-          :key="'workList'+index"
-        >
-          <p
-            class="title"
+          :key="'workList'+index">
+          <p class="title"
             :class="item.isShow == true?'isShow':''"
-            @click="toggleAccordionItem(item)"
-          >
+            @click="toggleAccordionItem(item)">
             <span>{{item.title}}</span>
           </p>
 
-          <div
-            class="contentWrap"
+          <div class="contentWrap"
             :class="item.isShow == true?'isShow':''"
-            v-if="item.isShow == true"
-          >
+            v-if="item.isShow == true">
             <div class="content">
-              <div
-                v-for="(child,indexC) in item.projectList"
-                :key="'projectList'+indexC"
-              >
+              <div v-for="(child,indexC) in item.projectList"
+                :key="'projectList'+indexC">
                 <div class="hr"></div>
                 <div class="detail">
                   <font class="fontBold">项目名：</font>{{child.projectName}}
@@ -124,29 +106,21 @@
     <div class="area">
       <p class="title">其他作品</p>
       <div class="accordion">
-        <div
-          class="accordionItem"
+        <div class="accordionItem"
           v-for="(item,index) in otherWork"
-          :key="'otherWork'+index"
-        >
-          <p
-            class="title"
+          :key="'otherWork'+index">
+          <p class="title"
             :class="item.isShow == true?'isShow':''"
-            @click="toggleAccordionItem(item)"
-          >
+            @click="toggleAccordionItem(item)">
             <span>{{item.title}} {{item.projectList[0].projectName}}</span>
           </p>
 
-          <div
-            class="contentWrap"
+          <div class="contentWrap"
             :class="item.isShow == true?'isShow':''"
-            v-if="item.isShow == true"
-          >
+            v-if="item.isShow == true">
             <div class="content">
-              <div
-                v-for="(child,indexC) in item.projectList"
-                :key="'skill'+indexC"
-              >
+              <div v-for="(child,indexC) in item.projectList"
+                :key="'skill'+indexC">
                 <div class="hr"></div>
                 <div class="detail">
                   <font class="fontBold">介绍：</font>{{child.info}}
@@ -169,10 +143,8 @@
     <div class="skillList area">
       <p class="title">技能栈</p>
       <div class="content">
-        <div
-          v-for="(item,index) in skillList"
-          :key="'skill'+index"
-        >{{item}}</div>
+        <div v-for="(item,index) in skillList"
+          :key="'skill'+index">{{item}}</div>
       </div>
     </div>
 
@@ -180,64 +152,46 @@
     <div class="starList area">
       <p class="title">技能关键字</p>
       <div class="content">
-        <div
-          class="item"
+        <div class="item"
           v-for="(item,index) in starList"
-          :key="'star'+index"
-        >
+          :key="'star'+index">
           <span>{{item.name}}</span>
-          <img
-            src="/static/image/star.png"
+          <img src="/static/image/star.png"
             v-for="(itemS,indexS) in item.star"
-            :key="'starS'+indexS"
-          />
-          <img
-            src="/static/image/star_e.png"
+            :key="'starS'+indexS" />
+          <img src="/static/image/star_e.png"
             v-for="(itemS1,indexS1) in (5-item.star)"
-            :key="'starS1'+indexS1"
-          />
+            :key="'starS1'+indexS1" />
         </div>
       </div>
     </div>
     <div class="contactList area">
       <p class="title">联系方式</p>
-      <div
-        class="haveData content"
-        v-if="isShowContact"
-      >
-        <div
-          class="iconArea"
-          @click="callPhone()"
-        >
+      <div class="haveData content"
+        v-if="isShowContact">
+        <div class="iconArea"
+          @click="callPhone()">
           <img src="/static/image/icon8.png" />
           <span class="link">{{baseInfo.mobilePhone}}</span>
         </div>
-        <div
-          class="iconArea"
-          @click="setClipboard(baseInfo.email)"
-        >
+        <div class="iconArea"
+          @click="setClipboard(baseInfo.email)">
           <img src="/static/image/icon9.png" />
           <span class="link">{{baseInfo.email}}</span>
         </div>
-        <div
-          class="iconArea"
-          @click="setClipboard(baseInfo.wechatNo)"
-        >
+        <div class="iconArea"
+          @click="setClipboard(baseInfo.wechatNo)">
           <img src="/static/image/icon10.png" />
           <span class="link">{{baseInfo.wechatNo}}</span>
         </div>
-        <div
-          class="iconArea"
-          @click="setClipboard(baseInfo.githubUrl)"
-        >
+        <div class="iconArea"
+          @click="setClipboard(baseInfo.githubUrl)">
           <img src="/static/image/icon11.png" />
           <span class="link">{{baseInfo.githubUrl}}</span>
         </div>
       </div>
-      <div
-        class="noData content"
-        v-if="!isShowContact"
-      >
+      <div class="noData content"
+        v-if="!isShowContact">
         <img src="/static/image/icon12.png" />
         <p>作者暂时隐藏了联系方式，可能最近没有找工作的想法</p>
       </div>
@@ -274,10 +228,8 @@
       </div>
     </div> -->
 
-    <div
-      class="powerBy"
-      @click="generatorPDF"
-    >
+    <div class="powerBy"
+      @click="generatorPDF">
       Powered By
       <span class="link">GitHub : @tenbamboo/Resume</span>
     </div>
@@ -373,46 +325,51 @@ export default {
     },
     // 生成pdf
     async generatorPDF () {
-      //宽度设置成650左右！！！！！！！再生成
-      const canvas = await html2canvas(
-        document.getElementById('indexContainer')
-      )
+      // 宽度设置成650左右！！！！！！！再生成
+      html2canvas(document.body, {
+        width: document.body.clientWidth,
+        height: document.body.scrollHeight,
+        windowWidth: document.body.scrollWidth,
+        windowHeight: document.body.scrollHeight + 500,
+        x: 0,
+        y: window.pageYOffset
+      }).then((canvas) => {
+        document.body.appendChild(canvas)
+        var contentWidth = canvas.width
+        var contentHeight = canvas.height
 
-      document.body.appendChild(canvas)
-      var contentWidth = canvas.width
-      var contentHeight = canvas.height
+        // 一页pdf显示html页面生成的canvas高度
+        var pageHeight = (contentWidth / 592.28) * 841.89
+        // 未生成pdf的html页面高度
+        var leftHeight = contentHeight
+        // 页面偏移
+        var position = 0
+        // a4纸的尺寸[595.28,841.89]，html页面生成的canvas在pdf中图片的宽高
+        var imgWidth = 595.28
+        var imgHeight = (592.28 / contentWidth) * contentHeight
 
-      // 一页pdf显示html页面生成的canvas高度
-      var pageHeight = (contentWidth / 592.28) * 841.89
-      // 未生成pdf的html页面高度
-      var leftHeight = contentHeight
-      // 页面偏移
-      var position = 0
-      // a4纸的尺寸[595.28,841.89]，html页面生成的canvas在pdf中图片的宽高
-      var imgWidth = 595.28
-      var imgHeight = (592.28 / contentWidth) * contentHeight
+        var pageData = canvas.toDataURL('image/jpeg', 1.0)
+        /* eslint new-cap: ['error', { 'newIsCapExceptions': ['jsPDF'] }] */
+        var pdf = new jsPDF('', 'pt', 'a4')
 
-      var pageData = canvas.toDataURL('image/jpeg', 1.0)
-      /* eslint new-cap: ['error', { 'newIsCapExceptions': ['jsPDF'] }] */
-      var pdf = new jsPDF('', 'pt', 'a4')
-
-      // 有两个高度需要区分，一个是html页面的实际高度，和生成pdf的页面高度(841.89)
-      // 当内容未超过pdf一页显示的范围，无需分页
-      if (leftHeight < pageHeight) {
-        pdf.addImage(pageData, 'JPEG', 0, 0, imgWidth, imgHeight)
-      } else {
-        while (leftHeight > 0) {
-          pdf.addImage(pageData, 'JPEG', 0, position, imgWidth, imgHeight)
-          leftHeight -= pageHeight
-          position -= 841.89
-          // 避免添加空白页
-          if (leftHeight > 0) {
-            pdf.addPage()
+        // 有两个高度需要区分，一个是html页面的实际高度，和生成pdf的页面高度(841.89)
+        // 当内容未超过pdf一页显示的范围，无需分页
+        if (leftHeight < pageHeight) {
+          pdf.addImage(pageData, 'JPEG', 0, 0, imgWidth, imgHeight)
+        } else {
+          while (leftHeight > 0) {
+            pdf.addImage(pageData, 'JPEG', 0, position, imgWidth, imgHeight)
+            leftHeight -= pageHeight
+            position -= 841.89
+            // 避免添加空白页
+            if (leftHeight > 0) {
+              pdf.addPage()
+            }
           }
         }
-      }
 
-      pdf.save('content.pdf')
+        pdf.save('content.pdf')
+      })
     }
   }
 }
@@ -722,6 +679,8 @@ export default {
     box-sizing: border-box;
     img {
       margin-top: 10px;
+      width: 100%;
+      height: 320px;
     }
   }
 

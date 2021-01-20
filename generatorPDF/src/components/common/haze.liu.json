@@ -130,13 +130,57 @@
     ],
     "otherWork": [
         {
+            "title": "Scratch",
+            "projectList": [
+                {
+                    "projectName": "少儿编程",
+                    "duty": "独立前端开发",
+                    "info": "scratch-gui二次开发",
+                    "skill": "React,Java"
+                }
+            ]
+        },
+        {
+            "title": "翕宝",
+            "projectList": [
+                {
+                    "projectName": "公益售卖网站",
+                    "duty": "独立前端开发",
+                    "info": "帮助心智障碍者手工做出的工艺品售卖的网站",
+                    "skill": "ElementUI,Vant,Vue,Java"
+                }
+            ]
+        },
+        {
             "title": "大连红娘",
             "projectList": [
                 {
-                    "projectName": "本地相亲交友平台（公众号）",
+                    "projectName": "微信公众号、微信小程序",
                     "duty": "独立前端开发",
                     "info": "大连本地相亲交友平台",
-                    "skill": "Vue,Java"
+                    "skill": "ElementUI,Taro,Vant,Vue,Java"
+                }
+            ]
+        },
+        {
+            "title": "奥园集团房地产",
+            "projectList": [
+                {
+                    "projectName": "全流程监控平台",
+                    "duty": "独立前端开发",
+                    "info": "房地产全流程监控平台",
+                    "skill": "Antd,Vue,Java"
+                }
+            ]
+        },
+        {
+            "title": "飞鱼平台",
+            "projectList": [
+                {
+                    "projectName": "APP内容分发",
+                    "duty": "独立前端开发",
+                    "info": "APP内容分发",
+                    "skill": "ElementUI,Vue,Java"
                 }
             ]
         },
@@ -191,9 +235,9 @@
         "nameAndSex": "刘心远 / 男",
         "birthday": "1989/10/14",
         "diplomaAndSchool": "本科 / 大连海洋大学计算机系",
-        "workAge": "6年",
+        "workAge": "8年",
         "location": "大连",
-        "wantPosition": "前端工程师、全栈工程师",
+        "wantPosition": "前端工程师、前端架构师、全栈工程师",
         "salary": "15.5K ~ 17K",
         "mobilePhone": "",
         "email": "liu19891014@163.com",
